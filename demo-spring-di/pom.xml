@@ -10,7 +10,7 @@
     </parent>
     <groupId>me.powerarc</groupId>
     <artifactId>demo-spring-di</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-RELEASE</version>
     <name>demo-spring-di</name>
     <description>demo-spring-di</description>
     <properties>
