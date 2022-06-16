@@ -15,4 +15,9 @@ public class Settings4 implements Serializable {
 	public static Settings4 getInstance() {
 		return SettingsHolder.INSTANCE;
 	}
+
+	// Deserializable 대응 방안
+	protected Object readResolve() {
+		return getInstance();
+	}
 }
