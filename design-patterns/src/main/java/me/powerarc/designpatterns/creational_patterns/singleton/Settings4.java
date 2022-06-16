@@ -1,6 +1,8 @@
 package me.powerarc.designpatterns.creational_patterns.singleton;
 
-public class Settings4 {
+import java.io.Serializable;
+
+public class Settings4 implements Serializable {
 
 	// static inner (권장되는 방식)
 	private Settings4() {
