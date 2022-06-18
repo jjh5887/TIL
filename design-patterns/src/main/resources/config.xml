@@ -7,4 +7,6 @@
         <constructor-arg value="hello"/>
     </bean>
 
+    <bean id="whiteship" class="me.powerarc.designpatterns.creational_patterns.abstract_factory._03_java.ShipFactory" />
+
 </beans>
