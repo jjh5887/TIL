@@ -1,5 +1,8 @@
 package me.powerarc.designpatterns.creational_patterns.factory_method._02_after;
 
+import me.powerarc.designpatterns.creational_patterns.abstract_factory._02_after.Anchor;
+import me.powerarc.designpatterns.creational_patterns.abstract_factory._02_after.Wheel;
+
 public class Ship {
 
     private String name;
@@ -7,6 +10,26 @@ public class Ship {
     private String color;
 
     private String logo;
+
+    private Anchor anchor;
+
+    private Wheel wheel;
+
+    public Anchor getAnchor() {
+        return anchor;
+    }
+
+    public void setAnchor(Anchor anchor) {
+        this.anchor = anchor;
+    }
+
+    public Wheel getWheel() {
+        return wheel;
+    }
+
+    public void setWheel(Wheel wheel) {
+        this.wheel = wheel;
+    }
 
     public String getName() {
         return name;
