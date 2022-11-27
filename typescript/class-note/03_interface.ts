@@ -36,4 +36,21 @@ interface StringArray {
 }
 
 let arr: StringArray = ['a', 'b', 'c'];
-let str: String = arr[0]; // a
+let str: string = arr[0]; // a
+
+// 딕셔너리
+interface StringRegexDictionary {
+    [key: string]: RegExp;
+}
+
+let obj: StringRegexDictionary = {
+    // sth: /abc/,
+    cssFile: /\.css$/,
+    jsFile: /\.js$/,
+}
+
+// obj['cssFile'] = 'a';
+
+Object.keys(obj).forEach(function (value) {
+
+})
