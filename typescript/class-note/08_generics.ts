@@ -37,3 +37,17 @@ logTextLength('a');
 // .length 가 없음
 // logTextLength(10);
 logTextLength({length: 10});
+
+
+// 제네릭 타입 제한 - keyof
+interface ShoppingItem {
+    name: string;
+    price: number;
+    stock: number;
+}
+
+function getShoppingItemOption<T extends keyof ShoppingItem>(itemOption: T): T {
+    return itemOption;
+}
+
+getShoppingItemOption('name');
