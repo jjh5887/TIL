@@ -51,3 +51,5 @@ function getShoppingItemOption<T extends keyof ShoppingItem>(itemOption: T): T {
 }
 
 getShoppingItemOption('name');
+getShoppingItemOption('price');
+getShoppingItemOption('stock');
