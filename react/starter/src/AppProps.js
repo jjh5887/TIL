@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import MyName from './MyName';
 import MyName2 from './MyName2';
 
-class App2 extends Component {
+class AppProps extends Component {
     render() {
         return (
             <Fragment>
