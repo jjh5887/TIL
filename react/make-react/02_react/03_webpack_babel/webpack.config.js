@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     mode: 'development',
-    entry: './app.js', // 입력 (어떤 js에서 시작할거야)
+    entry: './src/app.js', // 입력 (어떤 js에서 시작할거야)
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
