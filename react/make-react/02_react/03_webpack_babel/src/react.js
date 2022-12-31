@@ -5,7 +5,7 @@ export function createDOM(node) {
     const element = document.createElement(node.tag);
 
     Object.entries(node.props)
-        .forEach(([name, value]) => element.setAttribute(name, value));
+        .forEach(([ name, value ]) => element.setAttribute(name, value));
 
     node.children
         .map(createDOM)
@@ -21,5 +21,17 @@ export function render(vdom, container) {
 
 export function createElement(tag, props, ...children) {
     props = props || {};
-    return { tag, props, children, };
+
+    if (typeof tag === 'function') {
+        if (children.length > 0) {
+            return tag({
+                ...props,
+                children: children.length === 1 ? children[0] : children
+            })
+        } else {
+            return tag(props);
+        }
+    } else {
+        return { tag, props, children, };
+    }
 }
