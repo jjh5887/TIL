@@ -21,10 +21,6 @@ export function createDOM(node) {
     return element;
 }
 
-export function render(vdom, container) {
-    container.appendChild(createDOM(vdom));
-}
-
 function makeProps(props, children) {
     return {
         ...props,
@@ -55,3 +51,27 @@ export function createElement(tag, props, ...children) {
         return { tag, props, children, };
     }
 }
+
+
+// UI Update는 render가 재호출 되는 시점
+// Update되는 시점에 리액트는 이전에 렌더링한 virtual Dom과 새로 만들 virtual Dom을 가지고 있어서
+// Real Dom을 비교할 필요 없이 virtual Dom을 비교하여 많은 리소스를 절약
+export function render(vdom, container) {
+    container.appendChild(createDOM(vdom));
+}
+
+export const render = (function () {
+    let prevDom = null;
+
+    // 즉시 실행함수를 사용하는 이유는 클로저를 이용하기 위해
+    return function (vdom, container) {
+        if (prevDom === null) {
+            prevDom = vdom;
+        }
+
+        // diff
+        // createDom이 아닌 업데이트만 하는 메소드 사용 (실제로 구현은 안함, 오픈소스 참조하는 것으로)
+
+        container.appendChild(createDOM(vdom));
+    }
+})();
