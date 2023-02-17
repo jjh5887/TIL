@@ -1,3 +1,6 @@
+const hooks = [];
+let currentComponent = 0;
+
 export class Component {
     constructor(props) {
         this.props = props;
@@ -28,6 +31,24 @@ function makeProps(props, children) {
     }
 }
 
+// Hook의 제약을 이해하기 위한 코드 (작동 X)약
+function useState(initValue) {
+    // currentComponent++; 을 본인이 생성되기전에 해서 1 빼줘야함
+    let position = currentComponent - 1;
+
+    // 초기값 설정
+    if (!hooks[position]) {
+        hooks[position] = initValue;
+    }
+
+    // 외부에서 hooks접근 못하게 hooks를 변경하는 함수 생성하여 리턴
+    const modifier = (nextValue) => {
+      hooks[currentComponent] = nextValue;
+    }
+
+    return [ hooks[currentComponent], modifier ];
+}
+
 export function createElement(tag, props, ...children) {
     props = props || {};
 
@@ -41,6 +62,10 @@ export function createElement(tag, props, ...children) {
             const instance = new tag(makeProps(props, children));
             return instance.render();
         } else {
+
+            hooks[currentComponent] = null;
+            currentComponent++;
+
             if (children.length > 0) {
                 return tag(makeProps(props, children));
             } else {
@@ -60,7 +85,7 @@ export function render(vdom, container) {
     container.appendChild(createDOM(vdom));
 }
 
-export const render = (function () {
+export const render2 = (function () {
     let prevDom = null;
 
     // 즉시 실행함수를 사용하는 이유는 클로저를 이용하기 위해
