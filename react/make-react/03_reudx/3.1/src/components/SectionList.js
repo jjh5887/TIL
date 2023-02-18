@@ -33,6 +33,7 @@ export default function SectionList({ sectionList, startDiscuss, stopDiscuss, re
         </thead>
         <tbody>
           {sectionList.map((section, seq) => (
+            //  {/* 2차 daps */}
             <Section {...section} key={seq}
               startDiscuss={startDiscuss}
               stopDiscuss={stopDiscuss}

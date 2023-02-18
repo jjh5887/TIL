@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from 'uuid';
 
+// 컴포넌트 상태관리
 const store = {
   sectionList: [],
 };

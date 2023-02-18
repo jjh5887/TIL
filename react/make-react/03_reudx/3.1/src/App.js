@@ -52,7 +52,8 @@ function App({ data, addSection, startDiscuss, stopDiscuss, removeSection }) {
             />
           </Box>
         </Header>
-        <SectionList 
+        {/* 1차 daps */}
+        <SectionList
           sectionList={data.sectionList} 
           startDiscuss={startDiscuss}
           stopDiscuss={stopDiscuss}
