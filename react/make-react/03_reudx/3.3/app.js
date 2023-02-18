@@ -1,45 +1,21 @@
-function createStore() {
-    let state;
-    let handlers = [];
+import { createStore } from "./redux.js";
+import { reducer } from "./reducer.js";
+import * as Actions from "./actions.js";
 
-    function send(action) {
-        state = worker(state, action);
-        handlers.forEach(handler => handler());
-    }
-
-    function subscribe(handler) {
-        handlers.push(handler);
-    }
-
-    function getState() {
-        return state;
-    }
-
-    return {
-        send,
-        getState,
-        subscribe,
-    };
-}
-
-// 상태를 바꾸는 함수는 반드시 새로운 상태를 반환해라 (참조를 끊어서 무결성을 확보)
-function worker(state = { count: 0 }, action) {
-    // do something
-    // 특별한 로직은 아니고 Redux 자체 룰
-    switch (action.type) {
-        case 'increase':
-            return { ...state, count: state.count + 1 };
-        default:
-            return { ...state };
-    }
-}
-
-const store = createStore(worker);
+const store = createStore(reducer);
 
 store.subscribe(function () {
     console.log(store.getState());
 })
 
-store.send({ type: 'increase' });
-store.send({ type: 'increase' });
-store.send({ type: 'increase' });
+// Currying을 하지 않으면 이용하여 increase에 payload를 넘길 수 없음
+// 호출 지연을 이용한 형태
+store.dispatch(Actions.increase(1));
+store.dispatch(Actions.increase(1));
+
+
+store.dispatch(Actions.increase());
+store.dispatch(Actions.increase());
+store.dispatch(Actions.increase());
+store.dispatch(Actions.decrease());
+store.dispatch(Actions.reset());

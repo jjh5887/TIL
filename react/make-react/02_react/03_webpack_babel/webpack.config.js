@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     mode: 'development',
-    entry: './src/app.js', // 입력 (어떤 js에서 시작할거야)
+    entry: './src/redux.js', // 입력 (어떤 js에서 시작할거야)
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
@@ -23,7 +23,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
+                        presets: [ '@babel/preset-env', '@babel/preset-react' ]
                     }
                 }
             }
