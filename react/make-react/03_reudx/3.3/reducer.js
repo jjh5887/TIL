@@ -12,7 +12,15 @@ export function reducer(state = InitializeState, action) {
         case ActionType.DECREASE:
             return { ...state, count: state.count - 1 };
         case ActionType.RESET:
-            return { ...state, count: 0 };
+            // redux는 순수하지 않은 함수를 지원하지 않음. -> 비동기 지원 X
+            // 비동기는 미들웨어를 이용하여 처리
+            fetch('/reset')
+                .then(response => response.json())
+                .then(result => {
+                    if (result) {
+                        return { ...state, count: 0 };
+                    }
+                });
         default:
             return { ...state };
     }
