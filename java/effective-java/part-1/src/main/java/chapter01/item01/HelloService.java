@@ -11,4 +11,23 @@ public interface HelloService {
 	// 		return new EnglishHelloService();
 	// 	}
 	// }
+
+	static String hi() {
+		prepareMessage();
+		return "hi";
+	}
+
+	static String h2() {
+		prepareMessage();
+		return "hi";
+	}
+
+	static String h3() {
+		prepareMessage();
+		return "hi";
+	}
+
+	private static void prepareMessage() {
+	}
+
 }
