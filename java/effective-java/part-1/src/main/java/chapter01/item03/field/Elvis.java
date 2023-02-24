@@ -1,6 +1,8 @@
 package chapter01.item03.field;
 
-public class Elvis {
+import java.io.Serializable;
+
+public class Elvis implements Serializable {
 	/**
 	 * 싱글톤 오브젝트
 	 */
@@ -29,5 +31,11 @@ public class Elvis {
 
 	public void sing() {
 		System.out.println("I'll have a blue~ Christmas without you~");
+	}
+
+	// 역직렬화 할 때 사용하는 메서드를 오버라이딩 하여 방어
+	// 오버라이드이지만 문법적으로 오버라이드는 아님
+	private Object readResolve() {
+		return INSTANCE;
 	}
 }
