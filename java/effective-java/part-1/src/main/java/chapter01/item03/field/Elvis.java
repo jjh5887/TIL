@@ -2,7 +2,7 @@ package chapter01.item03.field;
 
 import java.io.Serializable;
 
-public class Elvis implements Serializable {
+public class Elvis implements Serializable, IElvis {
 	/**
 	 * 싱글톤 오브젝트
 	 */
