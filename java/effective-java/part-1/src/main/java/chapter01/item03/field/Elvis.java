@@ -6,7 +6,15 @@ public class Elvis {
 	 */
 	public static final Elvis INSTANCE = new Elvis();
 
+	private static boolean created;
+
+	// 리플렉션 방어 코드
 	private Elvis() {
+		if (created) {
+			throw new UnsupportedOperationException("can't be created by constructor.");
+		}
+
+		created = true;
 	}
 
 	// 이 메서드는 보통 클래스 바깥(다른 클래스)에 작성해야 한다!
