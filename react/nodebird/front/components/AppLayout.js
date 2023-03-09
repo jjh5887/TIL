@@ -12,7 +12,7 @@ const SearchInput = styled(Input.Search)`
 `;
 
 const AppLayout = ({ children }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [ isLoggedIn, setIsLoggedIn ] = useState(false);
     return (
         <div>
             <Menu mode="horizontal">
@@ -23,21 +23,22 @@ const AppLayout = ({ children }) => {
                     <Link href="/profile"><a>프로필</a></Link>
                 </Menu.Item>
                 <Menu.Item>
-                    <SearchInput enterButton />
+                    <SearchInput enterButton/>
                 </Menu.Item>
                 <Menu.Item>
                     <Link href="/signup"><a>회원가입</a></Link>
                 </Menu.Item>
             </Menu>
-            <Row gutter={8} // gutter 컬럼사이의 간격
+            <Row gutter={ 8 } // gutter 컬럼사이의 간격
             >
-                <Col xs={24} md={6}>
-                    {isLoggedIn ? <UserProfile/> : <LoginForm/>}
+                <Col xs={ 24 } md={ 6 }>
+                    { isLoggedIn ? <UserProfile setIsLoggedIn={ setIsLoggedIn }/> :
+                        <LoginForm setIsLoggedIn={ setIsLoggedIn }/> }
                 </Col>
-                <Col xs={24} md={12}>
-                    {children}
+                <Col xs={ 24 } md={ 12 }>
+                    { children }
                 </Col>
-                <Col xs={24} md={6}>
+                <Col xs={ 24 } md={ 6 }>
                     오른쪽 메뉴
                 </Col>
             </Row>
