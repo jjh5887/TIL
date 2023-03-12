@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Link from "next/link";
 import { Col, Input, Menu, Row } from 'antd';
 import styled from "styled-components";
+import { useSelector } from 'react-redux';
 
 import UserProfile from '../components/UserProfile';
 import LoginForm from '../components/LoginForm';
@@ -12,7 +13,8 @@ const SearchInput = styled(Input.Search)`
 `;
 
 const AppLayout = ({ children }) => {
-    const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+    const isLoggedIn = useSelector((state => state.user.isLoggedIn));
+
     return (
         <div>
             <Menu mode="horizontal">
@@ -32,8 +34,8 @@ const AppLayout = ({ children }) => {
             <Row gutter={ 8 } // gutter 컬럼사이의 간격
             >
                 <Col xs={ 24 } md={ 6 }>
-                    { isLoggedIn ? <UserProfile setIsLoggedIn={ setIsLoggedIn }/> :
-                        <LoginForm setIsLoggedIn={ setIsLoggedIn }/> }
+                    { isLoggedIn ? <UserProfile /> :
+                        <LoginForm /> }
                 </Col>
                 <Col xs={ 24 } md={ 12 }>
                     { children }
@@ -46,9 +48,10 @@ const AppLayout = ({ children }) => {
     )
 }
 
+// redux로 인해 더이상 사용할 필요 X
 // propTypes -> js 에서 prop의 타입을 확인해주는 역할
-AppLayout.propTypes = {
-    children: PropTypes.node.isRequired, // node는 react의 모든 타입 (사용은 비추)
-}
+// AppLayout.propTypes = {
+//     children: PropTypes.node.isRequired, // node는 react의 모든 타입 (사용은 비추)
+// }
 
 export default AppLayout;
