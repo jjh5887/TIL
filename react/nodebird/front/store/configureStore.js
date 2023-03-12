@@ -1,10 +1,18 @@
 import { createWrapper } from 'next-redux-wrapper';
-import { createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 
 import reducer from '../reducers/index';
+import { composeWithDevTools } from "redux-devtools-extension";
+
 
 const configureStore = () => {
-    const store = createStore(reducer);
+    const middlewares = [];
+    // redux devtools용 -> 크롬 확장프로그램
+    // npm i redux-devtools-extension
+    const enhancer = process.env.NODE_ENV === 'production'
+        ? compose(applyMiddleware(...middlewares))
+        : compose(composeWithDevTools(...middlewares));
+    const store = createStore(reducer, enhancer);
     return store;
 };
 
