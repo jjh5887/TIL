@@ -1,4 +1,4 @@
-package item08.autoclosable;
+package chapter01.item08.autoclosable;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

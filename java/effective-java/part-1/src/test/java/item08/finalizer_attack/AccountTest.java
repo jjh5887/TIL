@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
 
+import chapter01.item08.finalizer_attack.Account;
+import chapter01.item08.finalizer_attack.BrokenAccount;
+
 class AccountTest {
 
 	@Test

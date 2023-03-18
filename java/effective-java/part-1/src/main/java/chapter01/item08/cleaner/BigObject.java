@@ -1,4 +1,4 @@
-package item08.cleaner;
+package chapter01.item08.cleaner;
 
 import java.util.List;
 

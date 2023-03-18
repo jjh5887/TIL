@@ -1,4 +1,4 @@
-package item08.cleaner_as_a_safetynet;
+package chapter01.item08.cleaner_as_a_safetynet;
 
 import java.lang.ref.Cleaner;
 

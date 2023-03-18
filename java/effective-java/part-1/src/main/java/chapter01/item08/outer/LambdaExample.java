@@ -1,4 +1,4 @@
-package item08.outer;
+package chapter01.item08.outer;
 
 import java.lang.reflect.Field;
 

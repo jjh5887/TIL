@@ -1,4 +1,4 @@
-package item08.finalizer;
+package chapter01.item08.finalizer;
 
 public class FinalizerIsBad {
 	@Override

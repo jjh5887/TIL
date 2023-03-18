@@ -1,4 +1,4 @@
-package item08.finalizer_attack;
+package chapter01.item08.finalizer_attack;
 
 import java.math.BigDecimal;
 

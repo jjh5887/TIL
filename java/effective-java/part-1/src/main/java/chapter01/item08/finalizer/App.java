@@ -1,4 +1,4 @@
-package item08.finalizer;
+package chapter01.item08.finalizer;
 
 import java.lang.ref.ReferenceQueue;
 import java.lang.reflect.Field;
