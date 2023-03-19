@@ -1,5 +1,7 @@
 package chapter02.item10;
 
+import java.util.Objects;
+
 public class Point {
 	private final int x;
 	private final int y;
@@ -29,8 +31,13 @@ public class Point {
 		if (!(o instanceof Point)) {
 			return false;
 		}
-
 		Point p = (Point)o;
 		return p.x == x && p.y == y;
+	}
+
+	// hashCode를 구현하지 않으면 Set의 contains에서 equals 비교를 하지 않는다
+	@Override
+	public int hashCode() {
+		return Objects.hash(x, y);
 	}
 }
