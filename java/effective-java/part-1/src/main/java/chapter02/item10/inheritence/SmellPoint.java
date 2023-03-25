@@ -18,7 +18,8 @@ public class SmellPoint extends Point {
 
 		// o가 일반 Point면 색상을 무시하고 비교한다.
 		if (!(o instanceof SmellPoint))
-			// SmellPoint의 equals도 또 equals를 호출함...
+			// 또 다른 클래스의 equals도 내부에서 또 equals를 호출한다면 SmellPoint의 equals일텐데
+			// 그러면 또 이 코드로 돌아와서 equals를 호출... -> StackOverFlow
 			return o.equals(this);
 
 		// o가 ColorPoint면 색상까지 비교한다.
