@@ -52,6 +52,7 @@ public final class PhoneNumberWithHashCode {
 
 	@Override
 	public int hashCode() {
+		// double-checked lock
 		if (this.hashCode != 0) {
 			return hashCode;
 		}
