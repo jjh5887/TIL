@@ -4,6 +4,7 @@ import chapter02.item10.Color;
 
 public class SmellPointTest {
 	/**
+	 * Stack 메모리 조절해주는 Java 실행 옵션
 	 * TODO -Xss10M
 	 * @param args
 	 */
