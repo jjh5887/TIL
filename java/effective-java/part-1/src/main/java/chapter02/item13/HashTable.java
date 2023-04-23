@@ -68,6 +68,9 @@ public class HashTable implements Cloneable {
             result = (HashTable)super.clone();
             result.buckets = new Entry[this.buckets.length];
 
+            // clone 이나 생성자에서 오버라이드 가능한 메소드 사용은 안하는게 좋다!!
+            // result.buckets = createNewBucket();
+
             // 배열 자체를 하나 만들어 주고 각 요소별로 deep copy
             for (int i = 0 ; i < this.buckets.length; i++) {
                 if (buckets[i] != null) {
@@ -78,6 +81,12 @@ public class HashTable implements Cloneable {
         } catch (CloneNotSupportedException e) {
             throw  new AssertionError();
         }
+    }
+
+    // 객체를 만드는 과정을 끼어드는 행위는 위험
+    // 할거면 엄격하게 관리하거나 override 못하게
+    protected Entry[] createNewBucket() {
+        throw new AssertionError();
     }
 
     public static void main(String[] args) {
