@@ -14,6 +14,8 @@ public final class PhoneNumber implements Cloneable {
         System.out.println("constructor is called");
     }
 
+    // clone 대안
+    // clone 쓰면 final 멤버 못씀
     public PhoneNumber(PhoneNumber phoneNumber) {
         this(phoneNumber.areaCode, phoneNumber.prefix, phoneNumber.lineNum);
     }
