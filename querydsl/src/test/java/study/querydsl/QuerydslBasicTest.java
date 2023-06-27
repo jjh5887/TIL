@@ -15,7 +15,6 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import jakarta.persistence.EntityManager;
 import study.querydsl.entity.Member;
-import study.querydsl.entity.QMember;
 import study.querydsl.entity.Team;
 
 @SpringBootTest
@@ -85,5 +84,32 @@ public class QuerydslBasicTest {
 
 		assertThat(findMember.getUsername()).isEqualTo("member1");
 
+	}
+
+	@Test
+	public void search() {
+		Member findMember = queryFactory
+			.selectFrom(member)
+			.where(member.username.eq("member1")
+				.and(member.age.between(10, 30)))
+			.fetchOne();
+
+		assertThat(findMember.getUsername()).isEqualTo("member1");
+		assertThat(findMember.getAge() >= 10 && findMember.getAge() <= 30).isTrue();
+	}
+
+	@Test
+	public void searchAndParam() {
+		Member findMember = queryFactory
+			.selectFrom(member)
+			// and 인 경우에는 , 로 넘기면 다 and로 묶어서 넘겨줌
+			// null 이 있는 경우 무시해줘서 코드 작성이 편리해짐
+			.where(
+				member.username.eq("member1"),
+				member.age.between(10, 30))
+			.fetchOne();
+
+		assertThat(findMember.getUsername()).isEqualTo("member1");
+		assertThat(findMember.getAge() >= 10 && findMember.getAge() <= 30).isTrue();
 	}
 }
