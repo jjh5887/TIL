@@ -112,4 +112,30 @@ public class QuerydslBasicTest {
 		assertThat(findMember.getUsername()).isEqualTo("member1");
 		assertThat(findMember.getAge() >= 10 && findMember.getAge() <= 30).isTrue();
 	}
+
+	@Test
+	public void resultFetch() {
+		// List<Member> fetch = queryFactory
+		// 	.selectFrom(member)
+		// 	.fetch();
+		//
+		// Member fetchOne = queryFactory
+		// 	.selectFrom(member)
+		// 	.fetchOne();
+		//
+		// Member fetchFirst = queryFactory
+		// 	.selectFrom(member)
+		// 	.fetchFirst();
+
+		// QueryResults<Member> results = queryFactory
+		// 	.selectFrom(member)
+		// 	.fetchResults();
+		//
+		// results.getTotal();
+		// List<Member> members = results.getResults();
+
+		long total = queryFactory
+			.selectFrom(member)
+			.fetchCount();
+	}
 }
