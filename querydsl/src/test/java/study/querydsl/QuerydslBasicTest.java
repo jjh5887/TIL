@@ -285,4 +285,47 @@ public class QuerydslBasicTest {
 				.containsExactly("teamA", "teamB");
 	}
 
+	/**
+	 * 예) 회원과 팀을 조인하면서, 팀 이름이 teamA인 팀만 조인, 회원은 모두 조회
+	 * JPQL: select m, t from Member m left join m.team t on t.name = 'teamA'
+	 */
+	@Test
+	public void join_on_filtering(){
+		List<Tuple> result = queryFactory
+				.select(member, team)
+				.from(member)
+//				.leftJoin(member.team, team)
+				.join(member.team, team)
+//				.on(team.name.eq("teamA"))
+				// inner join 의 경우 on에서 필터링 하나 where에서 하나 똑같음 -> 그래서 inner join이면 where에서 처리하자
+				.where(team.name.eq("teamA"))
+				.fetch();
+
+		for (Tuple tuple : result) {
+			System.out.println("tuple = " + tuple);
+		}
+	}
+
+	/**
+	 * 연관 관계가 없는 엔티티 외부 조인
+	 * 회원의 이름이 팀 이름과 같은 대상 외부 조인
+	 */
+	@Test
+	public void join_on_no_relation(){
+		em.persist(new Member("teamA"));
+		em.persist(new Member("teamB"));
+		em.persist(new Member("teamC"));
+
+		List<Tuple> result = queryFactory
+				.select(member, team)
+				.from(member)
+				// 기존 left join과 문법이 다름! -> 기존: leftJoin(member.team, team)
+				.leftJoin(team).on(member.username.eq(team.name))
+				.fetch();
+
+		for (Tuple tuple : result) {
+			System.out.println("tuple = " + tuple);
+		}
+	}
+
 }
