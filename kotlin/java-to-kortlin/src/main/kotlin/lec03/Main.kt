@@ -13,7 +13,7 @@ fun main() {
 }
 
 // type casting
-fun casting(obj: Any) {
+fun casting1(obj: Any) {
     if (obj is Person) {
         val person = obj as Person
         println(person.name)
@@ -29,7 +29,7 @@ fun casting(obj: Any) {
 }
 
 
-fun casting(obj: Any?) {
+fun casting2(obj: Any?) {
     // safe casting
     val person = obj as? Person;
     println(person?.name);
