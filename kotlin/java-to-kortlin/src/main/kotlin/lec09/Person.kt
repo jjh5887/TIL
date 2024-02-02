@@ -45,9 +45,9 @@ class Person3(
     // 얘를 쓰면 backing field 굳이 안써도 됨
     val upperName: String = this.name.uppercase()
 
-    fun isAdult(): Boolean {
-        return this.age >= 20
-    }
+//    fun isAdult(): Boolean {
+//        return this.age >= 20
+//    }
 
     /**
      * Custom Getter (함수 대신 프로퍼티로 사용 가능)
